@@ -1,6 +1,6 @@
 C4Container
     title InverTrack-Chile - Container Diagram C4 Level 2
-    
+  
     Person(user, "Inversionista")
     
     Container_Boundary(invertrack, "InverTrack-Chile") {
@@ -12,8 +12,8 @@ C4Container
     
     System_Ext(yfinance_api, "Yahoo Finance API")
     
-    Rel(user, cli, "Ingresa ticker y opciones")
-    Rel(cli, logic, "Solicita procesamiento")
-    Rel(logic, scraper, "Llama funciones de extracción")
-    Rel(logic, csv, "Lee portafolio")
-    Rel(scraper, yfinance_api, "Fetch market data")
+    Rel(user, cli, "Ingresa ticker<br/>y opciones")
+    Rel(cli, logic, "Solicita<br/>procesamiento")
+    Rel(logic, scraper, "Llama funciones<br/>de extracción")
+    Rel(logic, csv, "Lee<br/>portafolio")
+    Rel(scraper, yfinance_api, "Fetch<br/>market data")
