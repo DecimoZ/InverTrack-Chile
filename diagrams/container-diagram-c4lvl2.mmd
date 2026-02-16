@@ -1,0 +1,19 @@
+C4Container
+    title InverTrack-Chile - Container Diagram C4 Level 2
+    
+    Person(user, "Inversionista")
+    
+    Container_Boundary(invertrack, "InverTrack-Chile") {
+        Container(cli, "CLI Interface", "Python", "Interfaz de línea de comandos para interacción del usuario")
+        Container(logic, "Business Logic", "Python", "Procesa portafolio y calcula métricas")
+        Container(scraper, "Data Scraper", "Python/yfinance", "Obtiene precios desde Yahoo Finance")
+        ContainerDb(csv, "Portfolio Data", "CSV", "Almacena activos del usuario")
+    }
+    
+    System_Ext(yfinance_api, "Yahoo Finance API")
+    
+    Rel(user, cli, "Ingresa ticker y opciones")
+    Rel(cli, logic, "Solicita procesamiento")
+    Rel(logic, scraper, "Llama funciones de extracción")
+    Rel(logic, csv, "Lee portafolio")
+    Rel(scraper, yfinance_api, "Fetch market data")

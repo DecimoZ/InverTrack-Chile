@@ -1,0 +1,11 @@
+C4Context
+    title InverTrack-Chile - Sistema de Seguimiento de Inversiones (Context Diagram C4 Level 1)
+    
+    Person(user, "Inversionista", "Usuario que gestiona su portafolio de acciones")
+    
+    System(invertrack, "InverTrack-Chile", "Sistema CLI para rastrear precios de acciones chilenas e internacionales")
+    
+    System_Ext(yfinance, "Yahoo Finance API", "Proveedor de datos financieros en tiempo real")
+    
+    Rel(user, invertrack, "Consulta precios y gestiona portafolio", "CLI")
+    Rel(invertrack, yfinance, "Obtiene datos de mercado", "HTTP/API")
