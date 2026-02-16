@@ -1,19 +1,24 @@
-C4Container
-    title InverTrack-Chile - Container Diagram C4 Level 2
-  
-    Person(user, "Inversionista")
+graph TB
+    user["👤 Inversionista"]
     
-    Container_Boundary(invertrack, "InverTrack-Chile") {
-        Container(cli, "CLI Interface", "Python", "Interfaz de línea de comandos para interacción del usuario")
-        Container(logic, "Business Logic", "Python", "Procesa portafolio y calcula métricas")
-        Container(scraper, "Data Scraper", "Python/yfinance", "Obtiene precios desde Yahoo Finance")
-        ContainerDb(csv, "Portfolio Data", "CSV", "Almacena activos del usuario")
-    }
+    subgraph invertrack["InverTrack-Chile"]
+        cli["CLI Interface<br/><i>main.py</i>"]
+        logic["Business Logic<br/><i>logic.py</i>"]
+        scraper["Data Scraper<br/><i>scraper.py</i>"]
+        csv[("📄 mis_activos.csv")]
+    end
     
-    System_Ext(yfinance_api, "Yahoo Finance API")
+    yf["🌐 Yahoo Finance API"]
     
-    Rel(user, cli, "Ingresa ticker<br/>y opciones")
-    Rel(cli, logic, "Solicita<br/>procesamiento")
-    Rel(logic, scraper, "Llama funciones<br/>de extracción")
-    Rel(logic, csv, "Lee<br/>portafolio")
-    Rel(scraper, yfinance_api, "Fetch<br/>market data")
+    user -->|"input"| cli
+    cli -->|"calls"| logic
+    logic -->|"reads"| csv
+    logic -->|"calls"| scraper
+    scraper -->|"fetch"| yf
+    
+    style user fill:#08427b
+    style cli fill:#1168bd
+    style logic fill:#1168bd
+    style scraper fill:#1168bd
+    style csv fill:#1168bd
+    style yf fill:#999999
