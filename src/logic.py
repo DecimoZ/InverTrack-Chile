@@ -1,17 +1,12 @@
 import yfinance as yf 
 import pandas as pd 
-import requests 
+import csv
+from scraper import extraer_precio
 
+mis_activos = pd.read_csv("/Users/marcosefrainzunigahernandez/Desktop/InverTrack-Chile/data/mis_activos.csv")
 
+columnas = mis_activos.apply("ticket")
+abierto = "Close"
 
-
-status = requests.get("https://api.github.com")
-print(status)
-
-apple = yf.Ticker("SPOT")
-
-nombre = "Apple Inc."
-info_completa = apple.info
-nombre_compañia = apple.info["longName"]
-
-print(nombre_compañia)
+extraer_precio(columnas,abierto)
+print(extraer_precio)

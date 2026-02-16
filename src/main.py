@@ -2,14 +2,14 @@ from scraper import extraer_precio
 import yfinance as yf 
 
 def opciones(ticket, eleccion):
-   
+
     tipo_columna = ""
     if eleccion == 1:
         tipo_columna = "Open"
     elif eleccion == 2:
         tipo_columna = "Close"
     
-   
+
     if tipo_columna != "":
         precio_recuperado = extraer_precio(ticket, tipo_columna)
         

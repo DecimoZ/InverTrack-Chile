@@ -41,7 +41,6 @@ def extraer_precio(empresa,tipo_data):
 
 
 
-
 #! Funcion que devuelve el precio de cierre
 def Precio_de_cierre(Empresa):
     ticket = yf.Ticker(Empresa)
