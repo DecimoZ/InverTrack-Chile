@@ -1,0 +1,24 @@
+graph TB
+    user["👤 Inversionista"]
+    
+    subgraph invertrack["InverTrack-Chile"]
+        cli["CLI Interface<br/><i>main.py</i>"]
+        logic["Business Logic<br/><i>logic.py</i>"]
+        scraper["Data Scraper<br/><i>scraper.py</i>"]
+        csv[("📄 mis_activos.csv")]
+    end
+    
+    yf["🌐 Yahoo Finance API"]
+    
+    user -->|"input"| cli
+    cli -->|"calls"| logic
+    logic -->|"reads"| csv
+    logic -->|"calls"| scraper
+    scraper -->|"fetch"| yf
+    
+    style user fill:#08427b
+    style cli fill:#1168bd
+    style logic fill:#1168bd
+    style scraper fill:#1168bd
+    style csv fill:#1168bd
+    style yf fill:#999999

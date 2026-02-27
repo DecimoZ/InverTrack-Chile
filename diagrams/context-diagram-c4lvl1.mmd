@@ -1,0 +1,19 @@
+graph TB
+    subgraph " "
+        user["👤 Inversionista<br/><i>Usuario que gestiona<br/>su portafolio</i>"]
+    end
+    
+    subgraph " "
+        system["📊 InverTrack-Chile<br/><i>Sistema CLI para rastrear<br/>precios de acciones</i>"]
+    end
+    
+    subgraph " "
+        api["🌐 Yahoo Finance API<br/><i>Proveedor de datos<br/>financieros</i>"]
+    end
+    
+    user -->|"Consulta precios"| system
+    system -->|"Obtiene datos"| api
+    
+    style user fill:#08427b
+    style system fill:#1168bd
+    style api fill:#999999
